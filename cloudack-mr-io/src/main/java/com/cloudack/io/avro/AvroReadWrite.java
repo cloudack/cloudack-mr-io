@@ -77,7 +77,7 @@ public class AvroReadWrite {
   public static void main (String[] args) throws IOException {
     Schema schema = makeSchema();
     File file = new File("data/person-file.avro");
-    testWrite(file, schema);
+    //testWrite(file, schema);
     testRead(file);
   }
 }

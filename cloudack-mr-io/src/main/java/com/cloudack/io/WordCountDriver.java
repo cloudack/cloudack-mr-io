@@ -26,6 +26,8 @@ public class WordCountDriver {
 	 */
 	public static void main(String[] args) throws Exception {
 		Configuration conf = new Configuration();
+		conf.set("mapred.compress.map.output", "true");
+		conf.set("mapred.output.compression.codec","org.apache.hadoop.io.compress.BZip2Codec");
 		
 		Job job = new Job(conf, "wordcount with output compression");
 
@@ -43,11 +45,13 @@ public class WordCountDriver {
 		job.setOutputFormatClass(TextOutputFormat.class);
 		
 		
-		/*[*/FileOutputFormat.setCompressOutput(job, true);
-	  //  FileOutputFormat.setOutputCompressorClass(job, GzipCodec.class);/*]*/
+		
+	/*	
+		FileOutputFormat.setCompressOutput(job, true);
+	    FileOutputFormat.setOutputCompressorClass(job, GzipCodec.class);
 	    
 	    FileOutputFormat.setOutputCompressorClass(job, BZip2Codec.class);
-	    
+	   */
 
 		FileInputFormat.addInputPath(job, new Path(args[0]));
 		FileOutputFormat.setOutputPath(job, new Path(args[1]));
