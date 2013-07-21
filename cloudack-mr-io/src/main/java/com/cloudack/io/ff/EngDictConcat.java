@@ -62,8 +62,8 @@ public class EngDictConcat
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
         job.setInputFormatClass(KeyValueTextInputFormat.class);
-        FileInputFormat.addInputPath(job, new Path("data/input/dict/input.txt"));
-        FileOutputFormat.setOutputPath(job, new Path("data/input/dict/output/"));
+        FileInputFormat.addInputPath(job, new Path("data/input/dict"));
+        FileOutputFormat.setOutputPath(job, new Path("data/input/dictoutput/"));
         System.exit(job.waitForCompletion(true) ? 0 : 1);
     }
 }
